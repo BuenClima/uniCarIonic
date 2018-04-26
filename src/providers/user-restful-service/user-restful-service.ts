@@ -4,7 +4,7 @@ import { BuildHeadersServiceProvider } from "../build-headers-service/build-head
 import { ReadHeadersServiceProvider } from "../read-headers-service/read-headers-service";
 
 /*
-
+    All services that use the this.token are not valid need to create local storage or cookies
 */
 @Injectable()
 export class UserRestfulServiceProvider {
@@ -46,7 +46,7 @@ export class UserRestfulServiceProvider {
         this.client = response_headers.getClient();
         this.uid = response_headers.getUid();
       },(response) => {
-        console.log(response)
+        console.log(response);
       }
     );
   }
@@ -68,23 +68,46 @@ export class UserRestfulServiceProvider {
         this.token = response_headers.getToken();
         this.client = response_headers.getClient();
         this.uid = response_headers.getUid();
-        console.log(response_headers.getToken());
       },(response) => {
-        console.log(response)
+        console.log(response);
       }
     );
   }
 
   public signOutUser(){
-
+    var headers = new BuildHeadersServiceProvider(this.token, "",this.client, this.uid);
+    return this.http.delete(this.baseUrl + 'auth/sign_out',
+      {
+        headers : headers.buildHeaders(),
+        observe : "response"
+      }).subscribe(
+      (response) => {
+        console.log(response.body);
+      },(response) => {
+        console.log(response);
+      }
+    );
   }
 
+  // Need to take a look if update with RAILS model or custom MODEL,
+  // Maybe 2 calls to 2 different URL
   public updateUser(){
 
   }
 
   public deleteUser(){
-
+    var headers = new BuildHeadersServiceProvider(this.token, "",this.client, this.uid);
+    return this.http.delete(this.baseUrl + 'auth',
+      {
+        headers : headers.buildHeaders(),
+        observe : "response"
+      }).subscribe(
+      (response) => {
+        console.log(response.body);
+      },(response) => {
+        console.log(response);
+      }
+    );
   }
 
   public getUserData(){

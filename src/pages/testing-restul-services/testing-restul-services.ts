@@ -22,9 +22,11 @@ export class TestingRestulServicesPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TestingRestulServicesPage');
+    console.log('Launching queries to server...');
     //this.ursp.createUser({"email" : "testingIonic2@test.com", "password" : "testionic", "password_confirmation" : "testionic"});
     //this.ursp.signInUser({"email" : "testingIonic1@test.com", "password" : "testionic"});
+    //this.ursp.signOutUser();
+    //this.ursp.deleteUser();
   }
 
 }
