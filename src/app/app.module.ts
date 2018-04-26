@@ -6,11 +6,16 @@ import { StatusBar } from '@ionic-native/status-bar';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
+import { UserRestfulServiceProvider } from '../providers/user-restful-service/user-restful-service';
+import { BuildHeadersServiceProvider } from '../providers/build-headers-service/build-headers-service';
+import { ReadHeadersServiceProvider } from '../providers/read-headers-service/read-headers-service';
+import {TestingRestulServicesPage} from "../pages/testing-restul-services/testing-restul-services";
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    TestingRestulServicesPage
   ],
   imports: [
     BrowserModule,
@@ -19,12 +24,16 @@ import { HomePage } from '../pages/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    TestingRestulServicesPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserRestfulServiceProvider,
+    BuildHeadersServiceProvider,
+    ReadHeadersServiceProvider
   ]
 })
 export class AppModule {}
