@@ -4,43 +4,45 @@ import { BuildHeadersServiceProvider } from "../build-headers-service/build-head
 import { ReadHeadersServiceProvider } from "../read-headers-service/read-headers-service";
 
 /*
-    All services that use the this.token are not valid need to create local storage or cookies
+  Generated class for the CarResfulServiceProvider provider.
+
+  See https://angular.io/guide/dependency-injection for more info on providers
+  and Angular DI.
 */
 @Injectable()
-export class UserRestfulServiceProvider {
+export class CarResfulServiceProvider {
 
   baseUrl:string = 'http://178.62.2.17/';
-  userData:any;
+  carData:any;
   token:string = '';
   uid:string = '';
   client:string = '';
 
-  constructor(public http: HttpClient) {
-    this.userData = {
-      'id' : '',
-      'email' : '',
-      'name' : '',
-      'nickname' : '',
-      'last_name' : '',
-      'birthdate' : ''
+  constructor(public http: HttpClient, token: string, uid: string, client: string) {
+    this.carData = {
+      brand : '',
+      model : '',
+      registratio : '',
+      seats : '',
+      year : '',
+      id : ''
     };
+    this.token = token;
+    this.uid = uid;
+    this.client = client;
   }
 
 
-  public createUser(data){
-    let headers = new BuildHeadersServiceProvider('','application/json');
+  public getAllCars(){
+    let headers = new BuildHeadersServiceProvider(this.token, "",this.client, this.uid);
     let response_headers = null;
-    return this.http.post(this.baseUrl + 'auth',{
-      "email" : data.email,
-      "password" : data.password,
-      "password_confirmation" : data.password_confirmation
-    },
+    return this.http.get(this.baseUrl + 'v1/cars',
       {
         headers : headers.buildHeaders(),
         observe : "response"
       }).subscribe(
       (response) => {
-        this.userData = response.body;
+        this.carData = response.body;
         response_headers = new ReadHeadersServiceProvider(response.headers.keys().map(key => `${key}: ${response.headers.get(key)}`));
         this.token = response_headers.getToken();
         this.client = response_headers.getClient();
@@ -51,19 +53,43 @@ export class UserRestfulServiceProvider {
     );
   }
 
-  public signInUser(data){
-    let headers = new BuildHeadersServiceProvider('','application/json');
+  public getCar(id){
+    let headers = new BuildHeadersServiceProvider(this.token, "",this.client, this.uid);
     let response_headers = null;
-    return this.http.post(this.baseUrl + 'auth/sign_in',{
-        "email" : data.email,
-        "password" : data.password,
+    return this.http.get(this.baseUrl + 'v1/cars/'+ id,
+      {
+        headers : headers.buildHeaders(),
+        observe : "response"
+      }).subscribe(
+      (response) => {
+        this.carData = response.body;
+        response_headers = new ReadHeadersServiceProvider(response.headers.keys().map(key => `${key}: ${response.headers.get(key)}`));
+        this.token = response_headers.getToken();
+        this.client = response_headers.getClient();
+        this.uid = response_headers.getUid();
+      },(response) => {
+        console.log(response);
+      }
+    );
+  }
+
+  public createCar(data){
+    let headers = new BuildHeadersServiceProvider(this.token, "",this.client, this.uid);
+    let response_headers = null;
+    return this.http.post(this.baseUrl + 'v1/cars',
+      {
+        "brand" : data.brand,
+        "model" : data.model,
+        "registratio" : data.registratio,
+        "seats" : data.seats,
+        "year" : data.year
       },
       {
         headers : headers.buildHeaders(),
         observe : "response"
       }).subscribe(
       (response) => {
-        this.userData = response.body;
+        this.carData = response.body;
         response_headers = new ReadHeadersServiceProvider(response.headers.keys().map(key => `${key}: ${response.headers.get(key)}`));
         this.token = response_headers.getToken();
         this.client = response_headers.getClient();
@@ -74,65 +100,27 @@ export class UserRestfulServiceProvider {
     );
   }
 
-  // Need to implement method to save data received on local storage|cookies
-  public validateToken(){
+  public deleteCar(id){
     let headers = new BuildHeadersServiceProvider(this.token, "",this.client, this.uid);
     let response_headers = null;
-    return this.http.get(this.baseUrl + 'auth/validate_token',
+    return this.http.delete(this.baseUrl + 'v1/cars/'+ id,
       {
         headers : headers.buildHeaders(),
         observe : "response"
       }).subscribe(
       (response) => {
-        this.userData = response.body;
+        this.carData = response.body;
         response_headers = new ReadHeadersServiceProvider(response.headers.keys().map(key => `${key}: ${response.headers.get(key)}`));
         this.token = response_headers.getToken();
         this.client = response_headers.getClient();
         this.uid = response_headers.getUid();
-        console.log(response.body);
       },(response) => {
         console.log(response);
       }
     );
   }
 
-  public signOutUser(){
-    let headers = new BuildHeadersServiceProvider(this.token, "",this.client, this.uid);
-    return this.http.delete(this.baseUrl + 'auth/sign_out',
-      {
-        headers : headers.buildHeaders(),
-        observe : "response"
-      }).subscribe(
-      (response) => {
-        console.log(response.body);
-      },(response) => {
-        console.log(response);
-      }
-    );
-  }
+  public updateCar(){
 
-  // Need to take a look if update with RAILS model or CUSTOM model,
-  // Maybe 2 calls to 2 different URL
-  public updateUser(){
-
-  }
-
-  public deleteUser(){
-    let headers = new BuildHeadersServiceProvider(this.token, "",this.client, this.uid);
-    return this.http.delete(this.baseUrl + 'auth',
-      {
-        headers : headers.buildHeaders(),
-        observe : "response"
-      }).subscribe(
-      (response) => {
-        console.log(response.body);
-      },(response) => {
-        console.log(response);
-      }
-    );
-  }
-
-  public getUserData(){
-    return this.userData;
   }
 }

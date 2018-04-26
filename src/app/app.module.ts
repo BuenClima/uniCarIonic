@@ -11,6 +11,7 @@ import { BuildHeadersServiceProvider } from '../providers/build-headers-service/
 import { ReadHeadersServiceProvider } from '../providers/read-headers-service/read-headers-service';
 import {TestingRestulServicesPage} from "../pages/testing-restul-services/testing-restul-services";
 import {HttpClientModule} from "@angular/common/http";
+import { CarResfulServiceProvider } from '../providers/car-resful-service/car-resful-service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import {HttpClientModule} from "@angular/common/http";
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     UserRestfulServiceProvider,
     BuildHeadersServiceProvider,
-    ReadHeadersServiceProvider
+    ReadHeadersServiceProvider,
+    CarResfulServiceProvider
   ]
 })
 export class AppModule {}
