@@ -74,6 +74,21 @@ export class UserRestfulServiceProvider {
     );
   }
 
+  public validateToken(){
+    var headers = new BuildHeadersServiceProvider(this.token, "",this.client, this.uid);
+    return this.http.get(this.baseUrl + 'auth/validate_token',
+      {
+        headers : headers.buildHeaders(),
+        observe : "response"
+      }).subscribe(
+      (response) => {
+        console.log(response.body);
+      },(response) => {
+        console.log(response);
+      }
+    );
+  }
+
   public signOutUser(){
     var headers = new BuildHeadersServiceProvider(this.token, "",this.client, this.uid);
     return this.http.delete(this.baseUrl + 'auth/sign_out',

@@ -27,6 +27,7 @@ export class TestingRestulServicesPage {
     //this.ursp.signInUser({"email" : "testingIonic1@test.com", "password" : "testionic"});
     //this.ursp.signOutUser();
     //this.ursp.deleteUser();
+    //this.urso.validateToken();
   }
 
 }
