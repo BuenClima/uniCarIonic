@@ -76,12 +76,18 @@ export class UserRestfulServiceProvider {
 
   public validateToken(){
     var headers = new BuildHeadersServiceProvider(this.token, "",this.client, this.uid);
+    var response_headers = null;
     return this.http.get(this.baseUrl + 'auth/validate_token',
       {
         headers : headers.buildHeaders(),
         observe : "response"
       }).subscribe(
       (response) => {
+        this.userData = response.body;
+        response_headers = new ReadHeadersServiceProvider(response.headers.keys().map(key => `${key}: ${response.headers.get(key)}`));
+        this.token = response_headers.getToken();
+        this.client = response_headers.getClient();
+        this.uid = response_headers.getUid();
         console.log(response.body);
       },(response) => {
         console.log(response);
