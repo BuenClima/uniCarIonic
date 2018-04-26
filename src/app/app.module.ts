@@ -10,6 +10,7 @@ import { UserRestfulServiceProvider } from '../providers/user-restful-service/us
 import { BuildHeadersServiceProvider } from '../providers/build-headers-service/build-headers-service';
 import { ReadHeadersServiceProvider } from '../providers/read-headers-service/read-headers-service';
 import {TestingRestulServicesPage} from "../pages/testing-restul-services/testing-restul-services";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {TestingRestulServicesPage} from "../pages/testing-restul-services/testin
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

@@ -23,7 +23,7 @@ export class TestingRestulServicesPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad TestingRestulServicesPage');
-    this.ursp.createUser({"email" : "testingIonic@test.com", "password" : "testingIonic"});
+    this.ursp.createUser({"email" : "testingIonic1@test.com", "password" : "testionic", "password_confirmation" : "testionic"});
     this.ursp.getUserData();
   }
 

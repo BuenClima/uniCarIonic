@@ -30,7 +30,7 @@ export class UserRestfulServiceProvider {
   public createUser(data){
     var headers = new BuildHeadersServiceProvider('','application/json');
     var response_headers = null;
-    return this.http.post(this.baseUrl + 'auth/',{
+    return this.http.post(this.baseUrl + 'auth',{
       "email" : data.email,
       "password" : data.password,
       "password_confirmation" : data.password_confirmation
@@ -40,12 +40,15 @@ export class UserRestfulServiceProvider {
         observe : "response"
       }).subscribe(
       (response) => {
+        console.log("Here");
         this.userData = response.body;
         response_headers = new ReadHeadersServiceProvider(response.headers.keys().map(key => `${key}: ${response.headers.get(key)}`));
         this.token = response_headers.getToken();
         this.client = response_headers.getClient();
         this.uid = response_headers.getUid();
-        console.log(response_headers.getToken());
+        console.log(this.token);
+        console.log(this.client);
+        console.log(this.uid);
       },(response) => {
         console.log(response)
       }
