@@ -72,7 +72,6 @@ export class UserRestfulServiceProvider {
     );
   }
 
-  // Need to implement method to save data received on local storage|cookies
   public validateToken(){
     let headers = new BuildHeadersServiceProvider(StorageServiceProvider.readValue("token"),
       "",
