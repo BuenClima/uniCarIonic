@@ -12,9 +12,6 @@ export class UserRestfulServiceProvider {
 
   baseUrl:string = 'http://178.62.2.17/';
   userData:any;
-  token:string = '';
-  uid:string = '';
-  client:string = '';
 
   constructor(public http: HttpClient) {
     this.userData = {
@@ -43,9 +40,9 @@ export class UserRestfulServiceProvider {
       (response) => {
         this.userData = response.body;
         response_headers = new ReadHeadersServiceProvider(response.headers.keys().map(key => `${key}: ${response.headers.get(key)}`));
-        this.token = response_headers.getToken();
-        this.client = response_headers.getClient();
-        this.uid = response_headers.getUid();
+        StorageServiceProvider.writeValues({"key" : "token", "value" : response_headers.getToken()});
+        StorageServiceProvider.writeValues({"key" : "client", "value" : response_headers.getClient()});
+        StorageServiceProvider.writeValues({"key" : "uid", "value" : response_headers.getUid()});
       },(response) => {
         console.log(response);
       }
@@ -66,9 +63,9 @@ export class UserRestfulServiceProvider {
       (response) => {
         this.userData = response.body;
         response_headers = new ReadHeadersServiceProvider(response.headers.keys().map(key => `${key}: ${response.headers.get(key)}`));
-        this.token = response_headers.getToken();
-        this.client = response_headers.getClient();
-        this.uid = response_headers.getUid();
+        StorageServiceProvider.writeValues({"key" : "token", "value" : response_headers.getToken()});
+        StorageServiceProvider.writeValues({"key" : "client", "value" : response_headers.getClient()});
+        StorageServiceProvider.writeValues({"key" : "uid", "value" : response_headers.getUid()});
       },(response) => {
         console.log(response);
       }
@@ -77,7 +74,10 @@ export class UserRestfulServiceProvider {
 
   // Need to implement method to save data received on local storage|cookies
   public validateToken(){
-    let headers = new BuildHeadersServiceProvider(this.token, "",this.client, this.uid);
+    let headers = new BuildHeadersServiceProvider(StorageServiceProvider.readValue("token"),
+      "",
+      StorageServiceProvider.readValue("client"),
+      StorageServiceProvider.readValue("uid"));
     let response_headers = null;
     return this.http.get(this.baseUrl + 'auth/validate_token',
       {
@@ -87,10 +87,9 @@ export class UserRestfulServiceProvider {
       (response) => {
         this.userData = response.body;
         response_headers = new ReadHeadersServiceProvider(response.headers.keys().map(key => `${key}: ${response.headers.get(key)}`));
-        this.token = response_headers.getToken();
-        this.client = response_headers.getClient();
-        this.uid = response_headers.getUid();
-        console.log(response.body);
+        StorageServiceProvider.writeValues({"key" : "token", "value" : response_headers.getToken()});
+        StorageServiceProvider.writeValues({"key" : "client", "value" : response_headers.getClient()});
+        StorageServiceProvider.writeValues({"key" : "uid", "value" : response_headers.getUid()});
       },(response) => {
         console.log(response);
       }
@@ -98,7 +97,11 @@ export class UserRestfulServiceProvider {
   }
 
   public signOutUser(){
-    let headers = new BuildHeadersServiceProvider(this.token, "",this.client, this.uid);
+    let headers = new BuildHeadersServiceProvider(
+      StorageServiceProvider.readValue("token"),
+      "",
+      StorageServiceProvider.readValue("client"),
+      StorageServiceProvider.readValue("uid"));
     return this.http.delete(this.baseUrl + 'auth/sign_out',
       {
         headers : headers.buildHeaders(),
@@ -119,7 +122,10 @@ export class UserRestfulServiceProvider {
   }
 
   public deleteUser(){
-    let headers = new BuildHeadersServiceProvider(this.token, "",this.client, this.uid);
+    let headers = new BuildHeadersServiceProvider(StorageServiceProvider.readValue("token"),
+      "",
+      StorageServiceProvider.readValue("client"),
+      StorageServiceProvider.readValue("uid"));
     return this.http.delete(this.baseUrl + 'auth',
       {
         headers : headers.buildHeaders(),

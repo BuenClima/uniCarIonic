@@ -13,16 +13,16 @@ import { StorageServiceProvider } from "../../providers/storage-service/storage-
 })
 export class TestingStorageServicePage {
 
-  constructor(private storage: StorageServiceProvider) {
+  constructor() {
   }
 
   ionViewDidLoad() {
     console.log('Launching storage tests...');
 
-    this.storage.writeValues({"key" : "token", "value" : "12345"});
-    console.log(this.storage.readValue("token"));
-    this.storage.writeValues({"key" : "token", "value" : "diego"});
-    console.log(this.storage.readValue("token"));
+    StorageServiceProvider.writeValues({"key" : "token", "value" : "12345"});
+    console.log(StorageServiceProvider.readValue("token"));
+    StorageServiceProvider.writeValues({"key" : "token", "value" : "diego"});
+    console.log(StorageServiceProvider.readValue("token"));
 
   }
 
