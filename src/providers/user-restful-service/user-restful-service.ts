@@ -51,7 +51,6 @@ export class UserRestfulServiceProvider {
 
   public signInUser(data){
     let headers = new BuildHeadersServiceProvider('','application/json');
-    let response_headers = null;
     return this.http.post(this.baseUrl + 'auth/sign_in',{
         "email" : data.email,
         "password" : data.password,
@@ -59,17 +58,7 @@ export class UserRestfulServiceProvider {
       {
         headers : headers.buildHeaders(),
         observe : "response"
-      }).subscribe(
-      (response) => {
-        this.userData = response.body;
-        response_headers = new ReadHeadersServiceProvider(response.headers.keys().map(key => `${key}: ${response.headers.get(key)}`));
-        StorageServiceProvider.writeValues({"key" : "token", "value" : response_headers.getToken()});
-        StorageServiceProvider.writeValues({"key" : "client", "value" : response_headers.getClient()});
-        StorageServiceProvider.writeValues({"key" : "uid", "value" : response_headers.getUid()});
-      },(response) => {
-        console.log(response);
-      }
-    );
+      })
   }
 
   public validateToken(){

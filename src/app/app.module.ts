@@ -9,6 +9,8 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TestingStorageServicePage } from "../pages/testing-storage-service/testing-storage-service";
 import {TestingRestulServicesPage} from "../pages/testing-restul-services/testing-restul-services";
+import { TabsPage } from "../pages/tabs/tabs";
+import { ProfilePage } from "../pages/profile/profile";
 
 import { UserRestfulServiceProvider } from '../providers/user-restful-service/user-restful-service';
 import { BuildHeadersServiceProvider } from '../providers/build-headers-service/build-headers-service';
@@ -21,7 +23,9 @@ import { StorageServiceProvider } from '../providers/storage-service/storage-ser
     MyApp,
     HomePage,
     TestingRestulServicesPage,
-    TestingStorageServicePage
+    TestingStorageServicePage,
+    TabsPage,
+    ProfilePage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +37,9 @@ import { StorageServiceProvider } from '../providers/storage-service/storage-ser
     MyApp,
     HomePage,
     TestingRestulServicesPage,
-    TestingStorageServicePage
+    TestingStorageServicePage,
+    TabsPage,
+    ProfilePage
   ],
   providers: [
     StatusBar,
