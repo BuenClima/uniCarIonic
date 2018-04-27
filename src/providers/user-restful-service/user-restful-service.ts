@@ -2,6 +2,7 @@ import {HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BuildHeadersServiceProvider } from "../build-headers-service/build-headers-service";
 import { ReadHeadersServiceProvider } from "../read-headers-service/read-headers-service";
+import { StorageServiceProvider } from "../storage-service/storage-service";
 
 /*
     All services that use the this.token are not valid need to create local storage or cookies
