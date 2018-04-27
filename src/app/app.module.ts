@@ -8,13 +8,16 @@ import {HttpClientModule} from "@angular/common/http";
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TestingStorageServicePage } from "../pages/testing-storage-service/testing-storage-service";
-import {TestingRestulServicesPage} from "../pages/testing-restul-services/testing-restul-services";
+import { TestingRestulServicesPage } from "../pages/testing-restul-services/testing-restul-services";
 
 import { UserRestfulServiceProvider } from '../providers/user-restful-service/user-restful-service';
 import { BuildHeadersServiceProvider } from '../providers/build-headers-service/build-headers-service';
 import { ReadHeadersServiceProvider } from '../providers/read-headers-service/read-headers-service';
 import { CarResfulServiceProvider } from '../providers/car-resful-service/car-resful-service';
 import { StorageServiceProvider } from '../providers/storage-service/storage-service';
+import { TripRestfulServiceProvider } from '../providers/trip-restful-service/trip-restful-service';
+import { CityRestulServiceProvider } from '../providers/city-restul-service/city-restul-service';
+import { PassengerRestfulServiceProvider } from '../providers/passenger-restful-service/passenger-restful-service';
 
 @NgModule({
   declarations: [
@@ -43,7 +46,10 @@ import { StorageServiceProvider } from '../providers/storage-service/storage-ser
     BuildHeadersServiceProvider,
     ReadHeadersServiceProvider,
     CarResfulServiceProvider,
-    StorageServiceProvider
+    StorageServiceProvider,
+    TripRestfulServiceProvider,
+    CityRestulServiceProvider,
+    PassengerRestfulServiceProvider
   ]
 })
 export class AppModule {}
