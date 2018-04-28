@@ -1,3 +1,10 @@
 page-register-user {
-
+  .scroll-content {
+    overflow-y: auto !important;
+  }
+  .error {
+    color: #f53d3d;
+    margin-top: 10px;
+    margin-left: 15px;
+  }
 }

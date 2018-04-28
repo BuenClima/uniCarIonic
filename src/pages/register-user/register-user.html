@@ -13,33 +13,39 @@
 </ion-header>
 
 
-<ion-content padding>
-  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+<ion-content padding >
+  <form [formGroup]="myForm" novalidate (ngSubmit)="onSubmit()">
     <ion-list>
       <ion-item>
         <ion-label floating>Nombre</ion-label>
         <ion-input type="text" formControlName="name"></ion-input>
       </ion-item>
+      <div class="error">{{mensajeName}}</div>
       <ion-item>
         <ion-label floating>Apellidos</ion-label>
         <ion-input type="text" formControlName="lastname"></ion-input>
       </ion-item>
+      <div class="error">{{mensajeLastname}}</div>
       <ion-item>
         <ion-label floating>Fecha de nacimiento</ion-label>
-        <ion-input type="text" formControlName="birthdate"></ion-input>
+        <ion-datetime displayFormat="DD MMM YYYY" formControlName="birthdate"></ion-datetime>
       </ion-item>
+      <div class="error">{{mensajeBirthdate}}</div>
       <ion-item>
         <ion-label floating>Correo electrónico</ion-label>
-        <ion-input type="text" formControlName="email"></ion-input>
+        <ion-input type="email" formControlName="email"></ion-input>
       </ion-item>
+      <div class="error">{{mensajeEmail}}</div>
       <ion-item>
         <ion-label floating>Contraseña</ion-label>
         <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
+      <div class="error">{{mensajePassword}}</div>
       <ion-item>
         <ion-label floating>Repite contraseña</ion-label>
         <ion-input type="password" formControlName="password_confirmation"></ion-input>
       </ion-item>
+      <div class="error">{{mensajeConfirmPassword}}</div>
     </ion-list>
     <ion-title><button ion-button type="submit" round outline>Registrarse</button></ion-title>
   </form>
