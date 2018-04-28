@@ -1,1 +1,14 @@
-<ion-nav [root]="rootPage"></ion-nav>
+<ion-menu [content]="menu" persistent="true">
+  <ion-content>
+    <ion-list>
+      <img src="https://www.marismith.com/wp-content/uploads/2014/07/facebook-profile-blank-face.jpeg" alt="">
+      <button ion-item *ngFor="let page of pages" (click)="goToPage(page.component)" menuClose>
+        <ion-icon item-left name="{{ page.icon }}"></ion-icon>
+        {{ page.title }}
+      </button>
+    </ion-list>
+
+  </ion-content>
+</ion-menu>
+
+<ion-nav #menu [root]="rootPage"></ion-nav>

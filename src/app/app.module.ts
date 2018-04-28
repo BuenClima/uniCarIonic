@@ -12,12 +12,17 @@ import {TestingRestulServicesPage} from "../pages/testing-restul-services/testin
 import { TabsPage } from "../pages/tabs/tabs";
 import { ProfilePage } from "../pages/profile/profile";
 import { RegisterUserPage } from "../pages/register-user/register-user";
+import { ViewCarPage } from "../pages/view-car/view-car";
+import { ViewTripsPage } from "../pages/view-trips/view-trips";
+import { SearchTripPage } from "../pages/search-trip/search-trip";
+import { CreateTripPage } from "../pages/create-trip/create-trip";
 
 import { UserRestfulServiceProvider } from '../providers/user-restful-service/user-restful-service';
 import { BuildHeadersServiceProvider } from '../providers/build-headers-service/build-headers-service';
 import { ReadHeadersServiceProvider } from '../providers/read-headers-service/read-headers-service';
 import { CarResfulServiceProvider } from '../providers/car-resful-service/car-resful-service';
 import { StorageServiceProvider } from '../providers/storage-service/storage-service';
+import { MenuServiceProvider } from '../providers/menu-service/menu-service';
 
 @NgModule({
   declarations: [
@@ -27,7 +32,11 @@ import { StorageServiceProvider } from '../providers/storage-service/storage-ser
     TestingStorageServicePage,
     TabsPage,
     ProfilePage,
-    RegisterUserPage
+    RegisterUserPage,
+    ViewTripsPage,
+    ViewCarPage,
+    SearchTripPage,
+    CreateTripPage
   ],
   imports: [
     BrowserModule,
@@ -42,7 +51,11 @@ import { StorageServiceProvider } from '../providers/storage-service/storage-ser
     TestingStorageServicePage,
     TabsPage,
     ProfilePage,
-    RegisterUserPage
+    RegisterUserPage,
+    ViewTripsPage,
+    ViewCarPage,
+    SearchTripPage,
+    CreateTripPage
   ],
   providers: [
     StatusBar,
@@ -52,7 +65,8 @@ import { StorageServiceProvider } from '../providers/storage-service/storage-ser
     BuildHeadersServiceProvider,
     ReadHeadersServiceProvider,
     CarResfulServiceProvider,
-    StorageServiceProvider
+    StorageServiceProvider,
+    MenuServiceProvider
   ]
 })
 export class AppModule {}
