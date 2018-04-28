@@ -1,28 +1,27 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController,} from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { FormBuilder, FormGroup} from '@angular/forms';
 import { ProfilePage } from "../profile/profile";
 import { UserRestfulServiceProvider } from "../../providers/user-restful-service/user-restful-service";
 import { ReadHeadersServiceProvider } from "../../providers/read-headers-service/read-headers-service";
 import { StorageServiceProvider } from "../../providers/storage-service/storage-service";
-import { RegisterUserPage } from "../register-user/register-user";
 
 @IonicPage()
 @Component({
-  selector: 'page-home',
-  templateUrl: 'home.html',
+  selector: 'page-register-user',
+  templateUrl: 'register-user.html',
 })
-export class HomePage {
+export class RegisterUserPage {
 
   myForm: FormGroup;
   mensaje: string;
 
-  constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public restful: UserRestfulServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public restful: UserRestfulServiceProvider) {
     this.myForm = this.createMyForm();
   }
 
   onSubmit(){
-    this.restful.signInUser(this.myForm.value).subscribe(
+    this.restful.createUser(this.myForm.value).subscribe(
       (response) => {
         let response_headers = null;
         response_headers = new ReadHeadersServiceProvider(response.headers.keys().map(key => `${key}: ${response.headers.get(key)}`));
@@ -31,19 +30,19 @@ export class HomePage {
         StorageServiceProvider.writeValues({"key" : "uid", "value" : response_headers.getUid()});
         this.navCtrl.setRoot(ProfilePage);
       },(response) => {
-        this.mensaje ="Introduzca correctamente usuario y contraseña";
+        this.mensaje ="Introduzca correctamente los datos";
       }
     );
   }
 
   private createMyForm(){
     return this.formBuilder.group({
+      name: [''],
+      lastname: [''],
+      birthdate: [''],
       email: [''],
       password: [''],
+      password_confirmation: ['']
     });
-  }
-
-  goToRegistration () {
-    this.navCtrl.push(RegisterUserPage);
   }
 }

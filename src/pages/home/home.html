@@ -16,8 +16,15 @@
         <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
     </ion-list>
-    <div class="center">
-      <button ion-button type="submit" round outline>Aceptar</button>
-    </div>
+    <ion-title><button ion-button type="submit" round outline>Aceptar</button></ion-title>
   </form>
+
+  <div class="error">{{mensaje}}</div>
+
+  <ion-footer>
+    <ion-toolbar>
+      <ion-title><div class="footer">¿No tienes cuenta?</div><button (click)="goToRegistration()" ion-button round outline>¡Regístrate!</button></ion-title>
+    </ion-toolbar>
+  </ion-footer>
+
 </ion-content>

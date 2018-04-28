@@ -11,6 +11,7 @@ import { TestingStorageServicePage } from "../pages/testing-storage-service/test
 import {TestingRestulServicesPage} from "../pages/testing-restul-services/testing-restul-services";
 import { TabsPage } from "../pages/tabs/tabs";
 import { ProfilePage } from "../pages/profile/profile";
+import { RegisterUserPage } from "../pages/register-user/register-user";
 
 import { UserRestfulServiceProvider } from '../providers/user-restful-service/user-restful-service';
 import { BuildHeadersServiceProvider } from '../providers/build-headers-service/build-headers-service';
@@ -25,7 +26,8 @@ import { StorageServiceProvider } from '../providers/storage-service/storage-ser
     TestingRestulServicesPage,
     TestingStorageServicePage,
     TabsPage,
-    ProfilePage
+    ProfilePage,
+    RegisterUserPage
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,8 @@ import { StorageServiceProvider } from '../providers/storage-service/storage-ser
     TestingRestulServicesPage,
     TestingStorageServicePage,
     TabsPage,
-    ProfilePage
+    ProfilePage,
+    RegisterUserPage
   ],
   providers: [
     StatusBar,
