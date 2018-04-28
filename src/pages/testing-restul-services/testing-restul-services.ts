@@ -29,7 +29,8 @@ export class TestingRestulServicesPage {
 
   ionViewDidLoad() {
     console.log('Launching queries to server...');
-    this.ursp.signInUser({"email" : "testingIonic1@test.com", "password" : "testionic"});
+    //this.ursp.signInUser({"email" : "testingIonic1@test.com", "password" : "testionic"});
+    this.ursp.signInUser({"email" : "test@test.com", "password" : "testpassword1"});
     //this.ursp.validateToken();
     //this.ursp.createUser({"email" : "testingIonic5@test.com", "password" : "testionic", "password_confirmation" : "testionic"});
     //this.ursp.signOutUser();
@@ -44,6 +45,7 @@ export class TestingRestulServicesPage {
     //this.carrsp.getAllCars();
     //this.carrsp.deleteCar();
     //this.carrsp.getCar();
+    this.carrsp.testCarImage();
 
     // Trips tests
     //this.trsp.getAllTrips();

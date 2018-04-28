@@ -4,13 +4,14 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { TestingRestulServicesPage } from "../pages/testing-restul-services/testing-restul-services";
 import { TestingStorageServicePage } from "../pages/testing-storage-service/testing-storage-service";
+import { TestImagePage } from "../pages/test-image/test-image";
 
 import { HomePage } from '../pages/home/home';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = TestingRestulServicesPage;
+  rootPage:any = TestImagePage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {

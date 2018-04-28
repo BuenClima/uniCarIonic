@@ -10,7 +10,7 @@ import { StorageServiceProvider } from "../storage-service/storage-service";
 @Injectable()
 export class UserRestfulServiceProvider {
 
-  baseUrl:string = 'http://178.62.2.17/';
+  baseUrl:string = 'http://localhost:3000/';
   userData:any;
 
   constructor(public http: HttpClient) {
