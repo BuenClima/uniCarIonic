@@ -6,11 +6,12 @@ import { TestingRestulServicesPage } from "../pages/testing-restul-services/test
 import { TestingStorageServicePage } from "../pages/testing-storage-service/testing-storage-service";
 
 import { HomePage } from '../pages/home/home';
+import {TestCameraPage} from "../pages/test-camera/test-camera";
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = TestingRestulServicesPage;
+  rootPage:any = TestCameraPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
