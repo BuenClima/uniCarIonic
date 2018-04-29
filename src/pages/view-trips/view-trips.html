@@ -11,11 +11,28 @@
 
 
 <ion-content padding>
-  <ion-card #myCard *ngFor="let item of data.data">
-    <ion-card-content>
-      <ion-card-title>
-        {{item.attributes.trip.id}}
-      </ion-card-title>
-    </ion-card-content>
-  </ion-card>
+  <div *ngIf="tripStatus == 'view'">
+    <ion-card #myCard *ngFor="let item of data.data">
+      <ion-card-content>
+        <ion-card-title>
+          {{item.attributes.trip.id}}
+          <ion-title><button ion-button type="button" round outline (click)="viewDetails(item.attributes.trip.id)">Detalles</button></ion-title>
+        </ion-card-title>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <div *ngIf="tripStatus == 'details'">
+    <ion-card>
+      <ion-card-content>
+        <ion-card-title>
+          {{ details.id }}
+        </ion-card-title>
+        <ion-card-title>
+          {{ details?.attributes["city-destination-id"].name}}
+        </ion-card-title>
+      </ion-card-content>
+    </ion-card>
+    <ion-title><button ion-button type="button" round outline (click)="cancelTrip(details.id)">Cancelar</button></ion-title>
+  </div>
 </ion-content>

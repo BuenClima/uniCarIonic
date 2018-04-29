@@ -11,7 +11,7 @@
 
 
 <ion-content padding>
-  <ion-card #myCard >
+  <ion-card #myCard *ngIf="profileStatus == 'view'">
     <ion-card-content>
       <ion-card-title>
         {{ response.data.name }}
@@ -26,5 +26,27 @@
         {{ response.data.birthdate }}
       </ion-card-title>
     </ion-card-content>
+    <ion-title><button ion-button type="button" round outline (click)="editProfile()">Editar</button></ion-title>
   </ion-card>
+
+
+  <div *ngIf="profileStatus == 'edit'">
+  <form [formGroup]="profileForm" novalidate (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Nombre</ion-label>
+        <ion-input type="text" formControlName="name" [placeholder]="response.data.name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Apellidos</ion-label>
+        <ion-input type="text" formControlName="last_name" [placeholder]="response.data.last_name"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Fecha de nacimiento</ion-label>
+        <ion-datetime displayFormat="YYYY MMM DD" formControlName="birthdate" [placeholder]="response.data.birthdate"></ion-datetime>
+      </ion-item>
+    </ion-list>
+    <ion-title><button ion-button type="submit" round outline>Editar!</button></ion-title>
+  </form>
+  </div>
 </ion-content>

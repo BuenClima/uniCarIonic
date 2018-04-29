@@ -87,8 +87,20 @@ export class UserRestfulServiceProvider {
 
   // Need to take a look if update with RAILS model or CUSTOM model,
   // Maybe 2 calls to 2 different URL
-  public updateUser(){
-
+  public updateUser(user,id){
+    let headers = new BuildHeadersServiceProvider(StorageServiceProvider.readValue("token"),
+      "application/json",
+      StorageServiceProvider.readValue("client"),
+      StorageServiceProvider.readValue("uid"));
+    return this.http.put(this.baseUrl + 'v1/users/'+ id, {
+      "name": user.name,
+      "last_name": user.last_name,
+      "birthdate" : user.birthdate
+      },
+      {
+        headers : headers.buildHeaders(),
+        observe : "response"
+      });
   }
 
   public deleteUser(){
