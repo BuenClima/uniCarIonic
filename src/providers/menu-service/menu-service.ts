@@ -3,11 +3,6 @@ import { Injectable } from '@angular/core';
 import {Subject} from "rxjs/Subject";
 import {Observable} from "rxjs/Observable";
 
-/*
-  Generated class for the MenuServiceProvider provider.
-  See https://angular.io/guide/dependency-injection for more info on providers
-  and Angular DI.
-*/
 @Injectable()
 export class MenuServiceProvider {
 

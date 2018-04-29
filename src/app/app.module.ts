@@ -11,13 +11,13 @@ import { TestingStorageServicePage } from "../pages/testing-storage-service/test
 
 import {TestingRestulServicesPage} from "../pages/testing-restul-services/testing-restul-services";
 
-import { TabsPage } from "../pages/tabs/tabs";
 import { ProfilePage } from "../pages/profile/profile";
 import { RegisterUserPage } from "../pages/register-user/register-user";
 import { ViewCarPage } from "../pages/view-car/view-car";
 import { ViewTripsPage } from "../pages/view-trips/view-trips";
 import { SearchTripPage } from "../pages/search-trip/search-trip";
 import { CreateTripPage } from "../pages/create-trip/create-trip";
+import { GettingStartedPage } from "../pages/getting-started/getting-started";
 
 
 import { UserRestfulServiceProvider } from '../providers/user-restful-service/user-restful-service';
@@ -27,6 +27,7 @@ import { CarResfulServiceProvider } from '../providers/car-resful-service/car-re
 import { StorageServiceProvider } from '../providers/storage-service/storage-service';
 
 import { MenuServiceProvider } from '../providers/menu-service/menu-service';
+import { AnimationService, AnimatesDirective } from "css-animator";
 
 import { TripRestfulServiceProvider } from '../providers/trip-restful-service/trip-restful-service';
 import { CityRestulServiceProvider } from '../providers/city-restul-service/city-restul-service';
@@ -39,13 +40,14 @@ import { PassengerRestfulServiceProvider } from '../providers/passenger-restful-
     HomePage,
     TestingRestulServicesPage,
     TestingStorageServicePage,
-    TabsPage,
     ProfilePage,
     RegisterUserPage,
     ViewTripsPage,
     ViewCarPage,
     SearchTripPage,
-    CreateTripPage
+    CreateTripPage,
+    AnimatesDirective,
+    GettingStartedPage
   ],
   imports: [
     BrowserModule,
@@ -58,13 +60,13 @@ import { PassengerRestfulServiceProvider } from '../providers/passenger-restful-
     HomePage,
     TestingRestulServicesPage,
     TestingStorageServicePage,
-    TabsPage,
     ProfilePage,
     RegisterUserPage,
     ViewTripsPage,
     ViewCarPage,
     SearchTripPage,
-    CreateTripPage
+    CreateTripPage,
+    GettingStartedPage
   ],
   providers: [
     StatusBar,
@@ -78,7 +80,9 @@ import { PassengerRestfulServiceProvider } from '../providers/passenger-restful-
     MenuServiceProvider,
     TripRestfulServiceProvider,
     CityRestulServiceProvider,
-    PassengerRestfulServiceProvider
+    PassengerRestfulServiceProvider,
+    AnimationService
+
   ]
 })
 export class AppModule {}

@@ -4,13 +4,6 @@ import { UserRestfulServiceProvider } from "../../providers/user-restful-service
 import {StorageServiceProvider} from "../../providers/storage-service/storage-service";
 import {ReadHeadersServiceProvider} from "../../providers/read-headers-service/read-headers-service";
 
-/**
- * Generated class for the ProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-profile',

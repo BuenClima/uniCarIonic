@@ -7,13 +7,6 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 import {TripRestfulServiceProvider} from "../../providers/trip-restful-service/trip-restful-service";
 import {PassengerRestfulServiceProvider} from "../../providers/passenger-restful-service/passenger-restful-service";
 
-/**
- * Generated class for the SearchTripPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-search-trip',

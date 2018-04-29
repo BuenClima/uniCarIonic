@@ -1,0 +1,53 @@
+page-getting-started {
+  .slides-float {
+    .slide-float {
+      top: 0;
+      position: fixed;
+      width: 100%;
+      margin-top: 20px;
+    }
+  }
+  .home {
+    font-family: "Comic Sans MS";
+    color: white;
+    background-color: SeaGreen;
+    text-shadow: 1px 0 0 gray, -1px 0 0 gray, 0 1px 0 gray, 0 -1px 0 gray, 1px 1px gray, -1px 1px 0 gray 1px -1px 0 gray -1px 1 px 0 gray;
+    h1 {
+      font-size: 5rem;
+    }
+    h2 {
+      font-size: 3rem;
+    }
+    ion-slide {
+      color: white;
+      background-color: transparent;
+    }
+    .slides-float {
+      color: white;
+      text-align: center;
+    }
+  }
+  .fullscreen-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+  }
+  .fullscreen-bg_video {
+    position: absolute;
+    top: 0;
+    left: -175%;
+    height: 100%;
+  }
+  .center {
+    top: 50%;
+    transform: translateY(-50%);
+    position: absolute !important;
+    text-align: center;
+    width: 100%;
+  }
+}
+

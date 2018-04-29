@@ -5,13 +5,6 @@ import {StorageServiceProvider} from "../../providers/storage-service/storage-se
 import {ReadHeadersServiceProvider} from "../../providers/read-headers-service/read-headers-service";
 import {FormBuilder} from "@angular/forms";
 
-/**
- * Generated class for the ViewCarPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-view-car',

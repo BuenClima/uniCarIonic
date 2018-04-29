@@ -4,9 +4,6 @@ import { BuildHeadersServiceProvider } from "../build-headers-service/build-head
 import { ReadHeadersServiceProvider } from "../read-headers-service/read-headers-service";
 import {StorageServiceProvider} from "../storage-service/storage-service";
 
-/*
-
-*/
 @Injectable()
 export class CarResfulServiceProvider {
 

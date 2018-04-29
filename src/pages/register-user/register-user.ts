@@ -5,13 +5,8 @@ import { FormBuilder, FormGroup} from '@angular/forms';
 import { UserRestfulServiceProvider } from "../../providers/user-restful-service/user-restful-service";
 import { ReadHeadersServiceProvider } from "../../providers/read-headers-service/read-headers-service";
 import { StorageServiceProvider } from "../../providers/storage-service/storage-service";
-import { MenuServiceProvider } from "../../providers/menu-service/menu-service";
 
-import { ProfilePage } from "../profile/profile";
-import { ViewCarPage } from "../view-car/view-car";
-import { ViewTripsPage } from "../view-trips/view-trips";
-import { CreateTripPage } from "../create-trip/create-trip";
-import { SearchTripPage } from "../search-trip/search-trip";
+import { GettingStartedPage } from "../getting-started/getting-started";
 
 @IonicPage()
 @Component({
@@ -28,8 +23,7 @@ export class RegisterUserPage {
   mensajePassword: string;
   mensajeConfirmPassword: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public restful: UserRestfulServiceProvider,
-              public menuService: MenuServiceProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder, public restful: UserRestfulServiceProvider) {
     this.myForm = this.createMyForm();
     console.log (this.myForm);
   }
@@ -42,15 +36,7 @@ export class RegisterUserPage {
         StorageServiceProvider.writeValues({"key" : "token", "value" : response_headers.getToken()});
         StorageServiceProvider.writeValues({"key" : "client", "value" : response_headers.getClient()});
         StorageServiceProvider.writeValues({"key" : "uid", "value" : response_headers.getUid()});
-        let pages = [
-          { title: 'Mi perfil', component: ProfilePage, icon: 'person' },
-          { title: 'Mis coches', component: ViewCarPage, icon: 'ios-car' },
-          { title: 'Mis viajes', component: ViewTripsPage, icon: 'ios-contact'},
-          { title: 'Buscar viajes', component: SearchTripPage, icon: 'search'},
-          { title: 'Crear viaje', component: CreateTripPage, icon: 'ios-contact'}
-        ];
-        this.menuService.addPages(pages);
-        this.navCtrl.setRoot(SearchTripPage);
+        this.navCtrl.setRoot(GettingStartedPage);
       },(response) => {
          console.log (response);
          if(this.myForm.controls.name.value == "") {
