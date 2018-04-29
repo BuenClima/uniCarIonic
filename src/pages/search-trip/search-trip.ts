@@ -77,9 +77,10 @@ export class SearchTripPage {
         StorageServiceProvider.writeValues({"key" : "client", "value" : response_headers.getClient()});
         StorageServiceProvider.writeValues({"key" : "uid", "value" : response_headers.getUid()});
         console.log(response.body);
-        this.messageOnSuccessPassenger = "Añadido!";
+        this.messageOnSuccessPassenger = "¡Añadido al viaje!";
       },(response) => {
         console.log(response);
+        this.messageOnSuccessPassenger = "No hay viajes que coincidan con la búsqueda";
       }
     );;
   }

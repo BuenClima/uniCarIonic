@@ -7,10 +7,6 @@ import {HttpClientModule} from "@angular/common/http";
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { TestingStorageServicePage } from "../pages/testing-storage-service/testing-storage-service";
-
-import {TestingRestulServicesPage} from "../pages/testing-restul-services/testing-restul-services";
-
 import { ProfilePage } from "../pages/profile/profile";
 import { RegisterUserPage } from "../pages/register-user/register-user";
 import { ViewCarPage } from "../pages/view-car/view-car";
@@ -38,8 +34,6 @@ import { PassengerRestfulServiceProvider } from '../providers/passenger-restful-
   declarations: [
     MyApp,
     HomePage,
-    TestingRestulServicesPage,
-    TestingStorageServicePage,
     ProfilePage,
     RegisterUserPage,
     ViewTripsPage,
@@ -58,8 +52,6 @@ import { PassengerRestfulServiceProvider } from '../providers/passenger-restful-
   entryComponents: [
     MyApp,
     HomePage,
-    TestingRestulServicesPage,
-    TestingStorageServicePage,
     ProfilePage,
     RegisterUserPage,
     ViewTripsPage,

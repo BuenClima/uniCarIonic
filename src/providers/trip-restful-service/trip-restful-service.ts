@@ -3,11 +3,7 @@ import { Injectable } from '@angular/core';
 import { BuildHeadersServiceProvider } from "../build-headers-service/build-headers-service";
 import { ReadHeadersServiceProvider } from "../read-headers-service/read-headers-service";
 import { StorageServiceProvider } from "../storage-service/storage-service";
-import {DateTime} from "ionic-angular";
 
-/*
-
-*/
 @Injectable()
 export class TripRestfulServiceProvider {
 

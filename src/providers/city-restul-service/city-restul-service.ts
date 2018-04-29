@@ -4,9 +4,6 @@ import {BuildHeadersServiceProvider} from "../build-headers-service/build-header
 import {StorageServiceProvider} from "../storage-service/storage-service";
 import {ReadHeadersServiceProvider} from "../read-headers-service/read-headers-service";
 
-/*
-
-*/
 @Injectable()
 export class CityRestulServiceProvider {
 

@@ -7,11 +7,6 @@ import {StorageServiceProvider} from "../../providers/storage-service/storage-se
 import {ReadHeadersServiceProvider} from "../../providers/read-headers-service/read-headers-service";
 import {CityRestulServiceProvider} from "../../providers/city-restul-service/city-restul-service";
 
-
-/**
-
- */
-
 @IonicPage()
 @Component({
   selector: 'page-create-trip',

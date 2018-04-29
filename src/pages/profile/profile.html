@@ -10,7 +10,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="home">
   <ion-card #myCard *ngIf="profileStatus == 'view'">
     <ion-card-content>
       <ion-card-title>
@@ -35,16 +35,19 @@
     <ion-list>
       <ion-item>
         <ion-label floating>Nombre</ion-label>
-        <ion-input type="text" formControlName="name" [placeholder]="response.data.name"></ion-input>
+        <ion-input type="text" formControlName="name"></ion-input>
       </ion-item>
+      <div class="error">{{mensajeNameProfile}}</div>
       <ion-item>
         <ion-label floating>Apellidos</ion-label>
-        <ion-input type="text" formControlName="last_name" [placeholder]="response.data.last_name"></ion-input>
+        <ion-input type="text" formControlName="last_name" ></ion-input>
       </ion-item>
+      <div class="error">{{mensajeLastnameProfile}}</div>
       <ion-item>
         <ion-label floating>Fecha de nacimiento</ion-label>
-        <ion-datetime displayFormat="YYYY MMM DD" formControlName="birthdate" [placeholder]="response.data.birthdate"></ion-datetime>
+        <ion-datetime displayFormat="YYYY MMM DD" formControlName="birthdate"></ion-datetime>
       </ion-item>
+      <div class="error">{{mensajeBirthdateProfile}}</div>
     </ion-list>
     <ion-title><button ion-button type="submit" round outline>Editar!</button></ion-title>
   </form>

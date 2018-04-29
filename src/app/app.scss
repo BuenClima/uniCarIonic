@@ -1,4 +1,21 @@
-// http://ionicframework.com/docs/theming/
+.home {
+  background-color: #7ecece;
+  .item {
+    background-color: transparent ;
+  }
+  .item-input ion-label, .item-select ion-label, input.text-input {
+    color: white;
+  }
+  .card {
+    background-color: transparent ;
+  }
+}
+.error {
+  color: #f53d3d;
+  margin-top: 10px;
+  margin-left: 15px;
+}
+
 
 
 // App Global Sass

@@ -4,6 +4,8 @@ import {CarResfulServiceProvider} from "../../providers/car-resful-service/car-r
 import {StorageServiceProvider} from "../../providers/storage-service/storage-service";
 import {ReadHeadersServiceProvider} from "../../providers/read-headers-service/read-headers-service";
 import {FormBuilder} from "@angular/forms";
+import { AlertController } from 'ionic-angular';
+
 
 @IonicPage()
 @Component({
@@ -16,9 +18,14 @@ export class ViewCarPage {
   deleteCarMessage:string = '';
   createCarStatus:string = "view";
   carForm:any;
+  mensajeBrand: string;
+  mensajeYear: string;
+  mensajeRegistratio: string;
+  mensajeSeats: string;
+  mensajeModel: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-              public crfs: CarResfulServiceProvider, public formBuilder: FormBuilder) {
+              public crfs: CarResfulServiceProvider, public formBuilder: FormBuilder,private alertCtrl: AlertController) {
     this.response = {
       brand: '',
       model: '',
@@ -27,6 +34,30 @@ export class ViewCarPage {
       year: ''
     };
     this.carForm = this.buildCarForm();
+  }
+
+  presentConfirm(id) {
+    let alert = this.alertCtrl.create({
+      title: '¿Quiere borrar su coche?',
+      message: '¿Está seguro de querer borrar su coche?',
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Borrar',
+          handler: () => {
+            this.deleteCar(id);
+            console.log('Buy clicked');
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   ionViewDidLoad() {
@@ -78,6 +109,21 @@ export class ViewCarPage {
         this.ionViewDidLoad();
       },(response) => {
         console.log(response);
+        if(this.carForm.controls.brand.value == "") {
+          this.mensajeBrand = "La marca no puede estar vacía";
+        }
+        if(this.carForm.controls.year.value == "") {
+          this.mensajeYear = "El año no puede estar vacío";
+        }
+        if(this.carForm.controls.registratio.value == "") {
+          this.mensajeRegistratio = "La matrícula no puede estar vacía";
+        }
+        if(this.carForm.controls.seats.value == "") {
+          this.mensajeSeats = "El número de asientos no puede estar vacío";
+        }
+        if(this.carForm.controls.model.value == "") {
+          this.mensajeModel = "El modelo no puede estar vacío";
+        }
       }
     );
   }

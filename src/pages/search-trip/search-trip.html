@@ -10,7 +10,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="home">
   <form [formGroup]="searchTripForm" novalidate (ngSubmit)="onSubmit()">
     <ion-list>
       <ion-item>
@@ -40,16 +40,16 @@
     <ion-card *ngFor="let item of responseTrips.data" >
       <ion-card-content>
         <ion-card-title>
-          {{item.attributes.departure_time}}
+          {{item.attributes["departure-time"]}}
         </ion-card-title>
         <ion-card-title>
-          {{item.attributes.arrival_time}}
+          {{item.attributes["arrival-time"]}}
         </ion-card-title>
         <ion-card-title>
-          {{item.attributes.car.user_id}}
+          {{item.attributes.car.brand}}
         </ion-card-title>
         <ion-card-title>
-          <button ion-button type="button" (click)="travelOntrip(item)">Viajar!</button>
+          <button ion-button type="button" (click)="travelOntrip(item)">¡Apúntate!</button>
         </ion-card-title>
       </ion-card-content>
     </ion-card>

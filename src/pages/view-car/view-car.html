@@ -10,7 +10,7 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding class="home">
   <div *ngIf="createCarStatus=='view'">
   <ion-card #myCard *ngFor="let item of response.data">
     <ion-card-content>
@@ -29,8 +29,7 @@
       <ion-card-title>
         {{item.attributes.year}}
       </ion-card-title>
-      <ion-title><button ion-button type="button" round outline (click)="deleteCar(item.id)">Borrar</button></ion-title>
-
+      <ion-title><button ion-button type="button" round outline (click)="presentConfirm(item.id)">Borrar</button></ion-title>
     </ion-card-content>
   </ion-card>
   <ion-title><button ion-button type="button" round outline (click)="createCar()">Crear</button></ion-title>
@@ -44,22 +43,27 @@
           <ion-label floating>Marca</ion-label>
           <ion-input type="text" formControlName="brand"></ion-input>
         </ion-item>
+        <div class="error">{{mensajeBrand}}</div>
         <ion-item>
           <ion-label floating>Modelo</ion-label>
           <ion-input type="text" formControlName="model"></ion-input>
         </ion-item>
+        <div class="error">{{mensajeModel}}</div>
         <ion-item>
           <ion-label floating>Plazas</ion-label>
           <ion-input type="number" formControlName="seats"></ion-input>
         </ion-item>
+        <div class="error">{{mensajeSeats}}</div>
         <ion-item>
           <ion-label floating>Año</ion-label>
           <ion-datetime displayFormat="YYYY" formControlName="year"></ion-datetime>
         </ion-item>
+        <div class="error">{{mensajeYear}}</div>
         <ion-item>
           <ion-label floating>Fecha Matriculacion</ion-label>
           <ion-datetime displayFormat="YYYY MMM DD" formControlName="registratio"></ion-datetime>
         </ion-item>
+        <div class="error">{{mensajeRegistratio}}</div>
       </ion-list>
       <ion-title><button ion-button type="submit" round outline>Crear!</button></ion-title>
     </form>

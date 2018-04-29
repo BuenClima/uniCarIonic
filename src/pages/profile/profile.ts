@@ -15,6 +15,10 @@ export class ProfilePage {
   response:any;
   profileStatus:string = "view";
   profileForm:any;
+  mensajeNameProfile: string;
+  mensajeLastnameProfile: string;
+  mensajeBirthdateProfile: string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams,
               private ursp: UserRestfulServiceProvider, public formBuilder: FormBuilder) {
     this.response = {
@@ -66,6 +70,15 @@ export class ProfilePage {
         this.ionViewDidLoad();
       },(response) => {
         console.log(response);
+        if(this.profileForm.controls.name.value == "") {
+          this.mensajeNameProfile = "El nombre no puede estar vacío";
+        }
+        if(this.profileForm.controls.name.value == "") {
+          this.mensajeLastnameProfile = "Los apellidos no pueden estar vacíos";
+        }
+        if(this.profileForm.controls.name.value == "") {
+          this.mensajeBirthdateProfile = "Escoga una fecha de nacimiento";
+        }
       }
     );
 
