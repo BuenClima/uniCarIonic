@@ -17,5 +17,48 @@
 
 
 <ion-content padding>
+  <form [formGroup]="searchTripForm" novalidate (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Origen</ion-label>
+        <ion-select formControlName="from">
+          <ion-option *ngFor="let item of cities" [value]="item.id">{{ item.attributes.name }}</ion-option>
+        </ion-select>
+      </ion-item>
+      <div class="error">{{originCityMessage}}</div>
+      <ion-item>
+        <ion-label floating>Destino</ion-label>
+        <ion-select formControlName="to">
+          <ion-option *ngFor="let item of cities" [value]="item.id">{{ item.attributes.name }}</ion-option>
+        </ion-select>
+      </ion-item>
+      <div class="error">{{destinationCityMessage}}</div>
+      <ion-item>
+        <ion-label floating>Fecha</ion-label>
+        <ion-datetime displayFormat="DD MMM YYYY" formControlName="date"></ion-datetime>
+      </ion-item>
+    </ion-list>
+    <ion-title><button ion-button type="submit" round outline>Buscar</button></ion-title>
+  </form>
 
+  <div class="error">{{mensaje}}</div>
+  <div *ngIf="responseTrips!=null && messageOnSuccessPassenger==''">
+    <ion-card *ngFor="let item of responseTrips.data" >
+      <ion-card-content>
+        <ion-card-title>
+          {{item.attributes.departure_time}}
+        </ion-card-title>
+        <ion-card-title>
+          {{item.attributes.arrival_time}}
+        </ion-card-title>
+        <ion-card-title>
+          {{item.attributes.car.user_id}}
+        </ion-card-title>
+        <ion-card-title>
+          <button ion-button type="button" (click)="travelOntrip(item)">Viajar!</button>
+        </ion-card-title>
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div *ngIf="messageOnSuccessPassenger!=''">{{ messageOnSuccessPassenger }}</div>
 </ion-content>

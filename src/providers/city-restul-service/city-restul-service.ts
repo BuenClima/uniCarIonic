@@ -30,17 +30,7 @@ export class CityRestulServiceProvider {
       {
         headers : headers.buildHeaders(),
         observe : "response"
-      }).subscribe(
-      (response) => {
-        this.cityData = response.body;
-        response_headers = new ReadHeadersServiceProvider(response.headers.keys().map(key => `${key}: ${response.headers.get(key)}`));
-        StorageServiceProvider.writeValues({"key" : "token", "value" : response_headers.getToken()});
-        StorageServiceProvider.writeValues({"key" : "client", "value" : response_headers.getClient()});
-        StorageServiceProvider.writeValues({"key" : "uid", "value" : response_headers.getUid()});
-      },(response) => {
-        console.log(response);
-      }
-    );
+      });
   }
 
   public getCity(id){
