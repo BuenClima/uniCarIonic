@@ -9,7 +9,6 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TestingStorageServicePage } from "../pages/testing-storage-service/testing-storage-service";
 import {TestingRestulServicesPage} from "../pages/testing-restul-services/testing-restul-services";
-import { TabsPage } from "../pages/tabs/tabs";
 import { ProfilePage } from "../pages/profile/profile";
 import { RegisterUserPage } from "../pages/register-user/register-user";
 import { ViewCarPage } from "../pages/view-car/view-car";
@@ -32,7 +31,6 @@ import { AnimationService, AnimatesDirective } from "css-animator";
     HomePage,
     TestingRestulServicesPage,
     TestingStorageServicePage,
-    TabsPage,
     ProfilePage,
     RegisterUserPage,
     ViewTripsPage,
@@ -53,7 +51,6 @@ import { AnimationService, AnimatesDirective } from "css-animator";
     HomePage,
     TestingRestulServicesPage,
     TestingStorageServicePage,
-    TabsPage,
     ProfilePage,
     RegisterUserPage,
     ViewTripsPage,

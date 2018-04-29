@@ -1,15 +1,35 @@
-<!--
-  Generated template for the GettingStartedPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
 </ion-header>
 
 
 <ion-content padding class="home">
+  <div class="slides-float">
+    <div class="slide-float" #slidefloat1>
+      <ion-icon name="ios-ionic"></ion-icon>
+      <h1>Ionic</h1>
+    </div>
+    <div class="slide-float" #slidefloat2>
+      <ion-icon name="logo-angular"></ion-icon>
+      <h1>Angular</h1>
+    </div>
+    <div class="slide-float" #slidefloat3>
+      <ion-icon name="logo-javascript"></ion-icon>
+      <h1>Both</h1>
+    </div>
+  </div>
+  <ion-slides #myslides pager (ionDrag)="onMove()">
+    <ion-slide>
+      <h2>LOLOL</h2>
+    </ion-slide>
+    <ion-slide>
+      <h2>XDXDXD</h2>
+    </ion-slide>
+    <ion-slide>
+      <h2>jesusitobendito</h2>
+    </ion-slide>
+  </ion-slides>
+
   <div class="fullscreen-bg">
     <video class="fullscreen-bg_video" autoplay loop muted webkit-playsinline>
       <source src="../../assets/icon/Street-View.mp4" type='video/mp4; codecs="h.264"'>
