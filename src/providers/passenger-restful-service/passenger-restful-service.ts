@@ -63,7 +63,6 @@ export class PassengerRestfulServiceProvider {
       "application/json",
       StorageServiceProvider.readValue("client"),
       StorageServiceProvider.readValue("uid"));
-    let response_headers = null;
     return this.http.post(this.baseUrl + 'v1/passengers',
       {
         "user" : data.user,

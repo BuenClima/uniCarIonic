@@ -17,5 +17,42 @@
 
 
 <ion-content padding>
+  <form [formGroup]="formCreateTrip" novalidate (ngSubmit)="onSubmit()">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Hora de Salida</ion-label>
+        <ion-datetime displayFormat="YYYY-MM-DDTHH:mm" formControlName="departure_time"></ion-datetime>
+      </ion-item>
+      <div class="error">{{departureTimeMessage}}</div>
+      <ion-item>
+        <ion-label floating>Hora de LLegada</ion-label>
+        <ion-datetime displayFormat="YYYY-MM-DDTHH:mm" formControlName="arrival_time"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <div class="error">{{arrivalTimeMessage}}</div>
+        <ion-label floating>Coche</ion-label>
+        <ion-select formControlName="car">
+          <ion-option *ngFor="let item of cars" [value]="item.id">{{ item.attributes.brand }} {{ item.attributes.model }}</ion-option>
+        </ion-select>
+      </ion-item>
+      <div class="error">{{carMessage}}</div>
+      <ion-item>
+        <ion-label floating>Origen</ion-label>
+        <ion-select formControlName="city_origin_id">
+          <ion-option *ngFor="let item of cities" [value]="item.id">{{ item.attributes.name }}</ion-option>
+        </ion-select>
+      </ion-item>
+      <div class="error">{{cityOriginMessage}}</div>
+      <ion-item>
+        <ion-label floating>Destino</ion-label>
+        <ion-select formControlName="city_destination_id">
+          <ion-option *ngFor="let item of cities" [value]="item.id">{{ item.attributes.name }}</ion-option>
+        </ion-select>
+      </ion-item>
+      <div class="error">{{cityDestinationMessage}}</div>
+    </ion-list>
+    <ion-title><button ion-button type="submit" round outline>Publicar!</button></ion-title>
+  </form>
 
+  <div *ngIf="tripCreated!=null">{{ messageOnSuccesfullTripCreated }}</div>
 </ion-content>
