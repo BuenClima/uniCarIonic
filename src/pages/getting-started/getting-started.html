@@ -6,38 +6,47 @@
 <ion-content padding class="home">
   <div class="slides-float">
     <div class="slide-float" #slidefloat1>
-      <ion-icon name="ios-ionic"></ion-icon>
-      <h1>Ionic</h1>
     </div>
     <div class="slide-float" #slidefloat2>
-      <ion-icon name="logo-angular"></ion-icon>
-      <h1>Angular</h1>
     </div>
     <div class="slide-float" #slidefloat3>
-      <ion-icon name="logo-javascript"></ion-icon>
-      <h1>Both</h1>
     </div>
   </div>
   <ion-slides #myslides pager (ionDrag)="onMove()">
     <ion-slide>
-      <h2>LOLOL</h2>
+      <div class="fullscreen-bg">
+        <video class="fullscreen-bg_video" autoplay loop muted webkit-playsinline>
+          <source src="../../assets/icon/Street-View.mp4" type='video/mp4; codecs="h.264"'>
+          <source src="../../assets/icon/Street-View.webm" type="video/webm">
+        </video>
+      </div>
+      <div class="center">
+        <h1>¡Bienvenido a UniCar!</h1>
+        <h2>Desliza hacia la derecha para ver las funcionalidades de nuestra aplicación</h2>
+      </div>
     </ion-slide>
     <ion-slide>
-      <h2>XDXDXD</h2>
+      <div class="fullscreen-bg">
+        <video class="fullscreen-bg_video" autoplay loop muted webkit-playsinline>
+          <source src="../../assets/icon/Bed-Phone.mp4" type='video/mp4; codecs="h.264"'>
+          <source src="../../assets/icon/Bed-Phone.webm" type="video/webm">
+        </video>
+      </div>
+      <div class="center">
+        <h2>¡En UniCar podrás ver tus datos, tus viajes, los coches que has registrado, buscar más viajes para hacer y crear tus propios viajes!<br>¡Y todo desde casa!</h2>
+      </div>
     </ion-slide>
     <ion-slide>
-      <h2>jesusitobendito</h2>
+      <div class="fullscreen-bg">
+        <video class="fullscreen-bg_video" autoplay loop muted webkit-playsinline>
+          <source src="../../assets/icon/NYC-Blurred-Traffic.mp4" type='video/mp4; codecs="h.264"'>
+          <source src="../../assets/icon/NYC-Blurred-Traffic.webm" type="video/webm">
+        </video>
+      </div>
+      <div class="center">
+        <h2>Y todo gracias a un sencillo menú despegable en la parte superior de la pantalla para hacer más fácil tu navegación</h2>
+        <button ion-button (click)="Start()" round outline>¡Empieza ya!</button>
+      </div>
     </ion-slide>
   </ion-slides>
-
-  <div class="fullscreen-bg">
-    <video class="fullscreen-bg_video" autoplay loop muted webkit-playsinline>
-      <source src="../../assets/icon/Street-View.mp4" type='video/mp4; codecs="h.264"'>
-      <source src="../../assets/icon/Street-View.webm" type="video/webm">
-    </video>
-  </div>
-  <div class="center">
-    <h1>¡Bienvenido a UniCar!</h1>
-    <h2>Desliza hacia la derecha para ver las funcionalidades de nuestra aplicación</h2>
-  </div>
 </ion-content>
