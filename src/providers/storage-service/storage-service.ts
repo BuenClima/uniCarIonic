@@ -16,7 +16,6 @@ export class StorageServiceProvider {
 
   public static writeValues(params){
     localStorage.setItem(params.key, params.value);
-    console.log(localStorage);
   }
 
 }
