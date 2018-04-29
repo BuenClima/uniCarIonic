@@ -59,8 +59,9 @@
       </ion-item>
       <div class="error">{{mensajeConfirmPassword}}</div>
     </ion-list>
-    <ion-title><button ion-button type="submit" round outline>Registrarse</button></ion-title>
+    <div animates #animation="animates">
+      <ion-title><button ion-button (click)="animation.start({type: 'hinge', duration: '1000'})" type="submit" round outline>Registrarse</button></ion-title>
+    </div>
   </form>
 
-  <div class="error">{{mensaje}}</div>
 </ion-content>

@@ -1,7 +1,5 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Iniciar sesión</ion-title>
-  </ion-navbar>
+
 </ion-header>
 
 <ion-content #myContent class="home" padding>
@@ -28,7 +26,10 @@
         <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
     </ion-list>
-    <ion-title><button ion-button type="submit" round outline>Aceptar</button></ion-title>
+    <div animates #animation="animates">
+      <ion-title><button ion-button (click)="animation.start({type: 'hinge', duration: '1000'})" type="submit" round outline>Aceptar</button></ion-title>
+    </div>
+
   </form>
 
   <div class="error">{{mensaje}}</div>

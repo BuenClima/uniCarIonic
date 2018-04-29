@@ -16,6 +16,7 @@ import { ViewCarPage } from "../pages/view-car/view-car";
 import { ViewTripsPage } from "../pages/view-trips/view-trips";
 import { SearchTripPage } from "../pages/search-trip/search-trip";
 import { CreateTripPage } from "../pages/create-trip/create-trip";
+import { GettingStartedPage } from "../pages/getting-started/getting-started";
 
 import { UserRestfulServiceProvider } from '../providers/user-restful-service/user-restful-service';
 import { BuildHeadersServiceProvider } from '../providers/build-headers-service/build-headers-service';
@@ -23,6 +24,7 @@ import { ReadHeadersServiceProvider } from '../providers/read-headers-service/re
 import { CarResfulServiceProvider } from '../providers/car-resful-service/car-resful-service';
 import { StorageServiceProvider } from '../providers/storage-service/storage-service';
 import { MenuServiceProvider } from '../providers/menu-service/menu-service';
+import { AnimationService, AnimatesDirective } from "css-animator";
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { MenuServiceProvider } from '../providers/menu-service/menu-service';
     ViewTripsPage,
     ViewCarPage,
     SearchTripPage,
-    CreateTripPage
+    CreateTripPage,
+    AnimatesDirective,
+    GettingStartedPage
   ],
   imports: [
     BrowserModule,
@@ -55,7 +59,8 @@ import { MenuServiceProvider } from '../providers/menu-service/menu-service';
     ViewTripsPage,
     ViewCarPage,
     SearchTripPage,
-    CreateTripPage
+    CreateTripPage,
+    GettingStartedPage
   ],
   providers: [
     StatusBar,
@@ -66,7 +71,8 @@ import { MenuServiceProvider } from '../providers/menu-service/menu-service';
     ReadHeadersServiceProvider,
     CarResfulServiceProvider,
     StorageServiceProvider,
-    MenuServiceProvider
+    MenuServiceProvider,
+    AnimationService
   ]
 })
 export class AppModule {}

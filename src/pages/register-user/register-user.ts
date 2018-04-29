@@ -12,6 +12,7 @@ import { ViewCarPage } from "../view-car/view-car";
 import { ViewTripsPage } from "../view-trips/view-trips";
 import { CreateTripPage } from "../create-trip/create-trip";
 import { SearchTripPage } from "../search-trip/search-trip";
+import { GettingStartedPage } from "../getting-started/getting-started";
 
 @IonicPage()
 @Component({
@@ -50,7 +51,7 @@ export class RegisterUserPage {
           { title: 'Crear viaje', component: CreateTripPage, icon: 'ios-contact'}
         ];
         this.menuService.addPages(pages);
-        this.navCtrl.setRoot(SearchTripPage);
+        this.navCtrl.setRoot(GettingStartedPage);
       },(response) => {
          console.log (response);
          if(this.myForm.controls.name.value == "") {
