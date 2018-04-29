@@ -1,44 +1,31 @@
-import {HttpClient } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BuildHeadersServiceProvider } from "../build-headers-service/build-headers-service";
 import { ReadHeadersServiceProvider } from "../read-headers-service/read-headers-service";
-import {StorageServiceProvider} from "../storage-service/storage-service";
-
+import { StorageServiceProvider } from "../storage-service/storage-service";
 /*
 
 */
 @Injectable()
-export class CarResfulServiceProvider {
+export class PassengerRestfulServiceProvider {
 
   baseUrl:string = 'http://178.62.2.17/';
-  carData:any;
-
 
   constructor(public http: HttpClient) {
-    this.carData = {
-      brand : '',
-      model : '',
-      registratio : '',
-      seats : '',
-      year : '',
-      id : ''
-    };
   }
 
-
-  public getAllCars(){
+  public getAllPassengers(){
     let headers = new BuildHeadersServiceProvider(StorageServiceProvider.readValue("token"),
       "",
       StorageServiceProvider.readValue("client"),
       StorageServiceProvider.readValue("uid"));
     let response_headers = null;
-    return this.http.get(this.baseUrl + 'v1/cars',
+    return this.http.get(this.baseUrl + 'v1/passengers',
       {
         headers : headers.buildHeaders(),
         observe : "response"
       }).subscribe(
       (response) => {
-        this.carData = response.body;
         response_headers = new ReadHeadersServiceProvider(response.headers.keys().map(key => `${key}: ${response.headers.get(key)}`));
         StorageServiceProvider.writeValues({"key" : "token", "value" : response_headers.getToken()});
         StorageServiceProvider.writeValues({"key" : "client", "value" : response_headers.getClient()});
@@ -49,19 +36,18 @@ export class CarResfulServiceProvider {
     );
   }
 
-  public getCar(id){
+  public getPassenger(id){
     let headers = new BuildHeadersServiceProvider(StorageServiceProvider.readValue("token"),
       "",
       StorageServiceProvider.readValue("client"),
       StorageServiceProvider.readValue("uid"));
     let response_headers = null;
-    return this.http.get(this.baseUrl + 'v1/cars/'+ id,
+    return this.http.get(this.baseUrl + 'v1/passengers/'+ id,
       {
         headers : headers.buildHeaders(),
         observe : "response"
       }).subscribe(
       (response) => {
-        this.carData = response.body;
         response_headers = new ReadHeadersServiceProvider(response.headers.keys().map(key => `${key}: ${response.headers.get(key)}`));
         StorageServiceProvider.writeValues({"key" : "token", "value" : response_headers.getToken()});
         StorageServiceProvider.writeValues({"key" : "client", "value" : response_headers.getClient()});
@@ -72,26 +58,22 @@ export class CarResfulServiceProvider {
     );
   }
 
-  public createCar(data){
+  public createPassenger(data){
     let headers = new BuildHeadersServiceProvider(StorageServiceProvider.readValue("token"),
       "application/json",
       StorageServiceProvider.readValue("client"),
       StorageServiceProvider.readValue("uid"));
     let response_headers = null;
-    return this.http.post(this.baseUrl + 'v1/cars',
+    return this.http.post(this.baseUrl + 'v1/passengers',
       {
-        "brand" : data.brand,
-        "model" : data.model,
-        "registratio" : data.registratio,
-        "seats" : data.seats,
-        "year" : data.year
+        "user" : data.user,
+        "trip" : data.trip
       },
       {
         headers : headers.buildHeaders(),
         observe : "response"
       }).subscribe(
       (response) => {
-        this.carData = response.body;
         response_headers = new ReadHeadersServiceProvider(response.headers.keys().map(key => `${key}: ${response.headers.get(key)}`));
         StorageServiceProvider.writeValues({"key" : "token", "value" : response_headers.getToken()});
         StorageServiceProvider.writeValues({"key" : "client", "value" : response_headers.getClient()});
@@ -102,19 +84,18 @@ export class CarResfulServiceProvider {
     );
   }
 
-  public deleteCar(id){
+  public deletePassenger(id){
     let headers = new BuildHeadersServiceProvider(StorageServiceProvider.readValue("token"),
       "",
       StorageServiceProvider.readValue("client"),
       StorageServiceProvider.readValue("uid"));
     let response_headers = null;
-    return this.http.delete(this.baseUrl + 'v1/cars/'+ id,
+    return this.http.delete(this.baseUrl + 'v1/passengers/'+ id,
       {
         headers : headers.buildHeaders(),
         observe : "response"
       }).subscribe(
       (response) => {
-        this.carData = response.body;
         response_headers = new ReadHeadersServiceProvider(response.headers.keys().map(key => `${key}: ${response.headers.get(key)}`));
         StorageServiceProvider.writeValues({"key" : "token", "value" : response_headers.getToken()});
         StorageServiceProvider.writeValues({"key" : "client", "value" : response_headers.getClient()});
@@ -125,7 +106,8 @@ export class CarResfulServiceProvider {
     );
   }
 
-  public updateCar(){
+  public updatePassenger(id){
 
   }
+
 }
