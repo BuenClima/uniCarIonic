@@ -23,7 +23,7 @@ export class HomePage {
 
   myForm: FormGroup;
   mensaje: string;
-
+  res: any;
   constructor(public navCtrl: NavController, public formBuilder: FormBuilder, public restful: UserRestfulServiceProvider, public menuService: MenuServiceProvider) {
     this.myForm = this.createMyForm();
   }
@@ -44,7 +44,9 @@ export class HomePage {
           { title: 'Crear viaje', component: CreateTripPage, icon: 'add-circle'}
         ];
         this.menuService.addPages(pages);
-        this.navCtrl.setRoot(ViewTripsPage);
+        this.navCtrl.setRoot(ProfilePage);
+        this.res = response.body;
+        StorageServiceProvider.writeValues({"key" : "id", "value" : this.res.data.id});
       },(response) => {
         this.mensaje ="Introduzca correctamente usuario y contraseña";
       }

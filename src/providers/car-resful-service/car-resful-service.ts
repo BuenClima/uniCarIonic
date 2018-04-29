@@ -31,22 +31,11 @@ export class CarResfulServiceProvider {
       "",
       StorageServiceProvider.readValue("client"),
       StorageServiceProvider.readValue("uid"));
-    let response_headers = null;
     return this.http.get(this.baseUrl + 'v1/cars',
       {
         headers : headers.buildHeaders(),
         observe : "response"
-      }).subscribe(
-      (response) => {
-        this.carData = response.body;
-        response_headers = new ReadHeadersServiceProvider(response.headers.keys().map(key => `${key}: ${response.headers.get(key)}`));
-        StorageServiceProvider.writeValues({"key" : "token", "value" : response_headers.getToken()});
-        StorageServiceProvider.writeValues({"key" : "client", "value" : response_headers.getClient()});
-        StorageServiceProvider.writeValues({"key" : "uid", "value" : response_headers.getUid()});
-      },(response) => {
-        console.log(response);
-      }
-    );
+      });
   }
 
   public getCar(id){

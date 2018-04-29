@@ -164,7 +164,7 @@ export class TripRestfulServiceProvider {
     );
   }
 
-  public myTrips(data){
+  public myTrips(id){
     let headers = new BuildHeadersServiceProvider(StorageServiceProvider.readValue("token"),
       "application/json",
       StorageServiceProvider.readValue("client"),
@@ -172,22 +172,11 @@ export class TripRestfulServiceProvider {
     let response_headers = null;
     return this.http.post(this.baseUrl + 'v1/myTrips',
       {
-        "trip" : data.trip,
+        "trip" : id,
       },
       {
         headers : headers.buildHeaders(),
         observe : "response"
-      }).subscribe(
-      (response) => {
-        this.tripData = response.body;
-        response_headers = new ReadHeadersServiceProvider(response.headers.keys().map(key => `${key}: ${response.headers.get(key)}`));
-        StorageServiceProvider.writeValues({"key" : "token", "value" : response_headers.getToken()});
-        StorageServiceProvider.writeValues({"key" : "client", "value" : response_headers.getClient()});
-        StorageServiceProvider.writeValues({"key" : "uid", "value" : response_headers.getUid()});
-        console.log(response.body)
-      },(response) => {
-        console.log(response);
-      }
-    );
+      });
   }
 }

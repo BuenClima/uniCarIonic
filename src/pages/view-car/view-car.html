@@ -17,5 +17,23 @@
 
 
 <ion-content padding>
-
+  <ion-card #myCard *ngFor="let item of response.data">
+    <ion-card-content>
+      <ion-card-title>
+        {{item.attributes.brand}}
+      </ion-card-title>
+      <ion-card-title>
+        {{item.attributes.model}}
+      </ion-card-title>
+      <ion-card-title>
+        {{item.attributes.registratio}}
+      </ion-card-title>
+      <ion-card-title>
+        {{item.attributes.seats}}
+      </ion-card-title>
+      <ion-card-title>
+        {{item.attributes.year}}
+      </ion-card-title>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

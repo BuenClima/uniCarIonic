@@ -17,5 +17,20 @@
 
 
 <ion-content padding>
-
+  <ion-card #myCard >
+    <ion-card-content>
+      <ion-card-title>
+        {{ response.data.name }}
+      </ion-card-title>
+      <ion-card-title>
+        {{ response.data.last_name }}
+      </ion-card-title>
+      <ion-card-title>
+        {{ response.data.email }}
+      </ion-card-title>
+      <ion-card-title>
+        {{ response.data.birthdate }}
+      </ion-card-title>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
