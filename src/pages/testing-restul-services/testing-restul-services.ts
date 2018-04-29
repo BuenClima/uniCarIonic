@@ -29,7 +29,7 @@ export class TestingRestulServicesPage {
 
   ionViewDidLoad() {
     console.log('Launching queries to server...');
-    this.ursp.signInUser({"email" : "testingIonic1@test.com", "password" : "testionic"});
+    this.ursp.signInUser({"email" : "passenger1@test.com", "password" : "password"});
     //this.ursp.validateToken();
     //this.ursp.createUser({"email" : "testingIonic5@test.com", "password" : "testionic", "password_confirmation" : "testionic"});
     //this.ursp.signOutUser();
@@ -55,7 +55,8 @@ export class TestingRestulServicesPage {
       "city_destination_id" : 2
     });*/
     //this.trsp.deleteTrip();
-
+    //this.trsp.searchTrip({"from" : 2, "to" : 11})
+    this.trsp.myTrips({"trip" : 1})
     //Cities tests
     //this.cityrsp.createCity({"name" : "Maspalomas"});
     //this.cityrsp.getAllCities();

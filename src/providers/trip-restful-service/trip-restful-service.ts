@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BuildHeadersServiceProvider } from "../build-headers-service/build-headers-service";
 import { ReadHeadersServiceProvider } from "../read-headers-service/read-headers-service";
 import { StorageServiceProvider } from "../storage-service/storage-service";
+import {DateTime} from "ionic-angular";
 
 /*
 
@@ -133,5 +134,60 @@ export class TripRestfulServiceProvider {
 
   public updateTrip(){
 
+  }
+
+  public searchTrip(data){
+    let headers = new BuildHeadersServiceProvider(StorageServiceProvider.readValue("token"),
+      "application/json",
+      StorageServiceProvider.readValue("client"),
+      StorageServiceProvider.readValue("uid"));
+    let response_headers = null;
+    return this.http.post(this.baseUrl + 'v1/searchTrip',
+      {
+        "from" : data.from,
+        "to" : data.to,
+        "date" : new Date().toUTCString(),
+      },
+      {
+        headers : headers.buildHeaders(),
+        observe : "response"
+      }).subscribe(
+      (response) => {
+        this.tripData = response.body;
+        response_headers = new ReadHeadersServiceProvider(response.headers.keys().map(key => `${key}: ${response.headers.get(key)}`));
+        StorageServiceProvider.writeValues({"key" : "token", "value" : response_headers.getToken()});
+        StorageServiceProvider.writeValues({"key" : "client", "value" : response_headers.getClient()});
+        StorageServiceProvider.writeValues({"key" : "uid", "value" : response_headers.getUid()});
+      },(response) => {
+        console.log(response);
+      }
+    );
+  }
+
+  public myTrips(data){
+    let headers = new BuildHeadersServiceProvider(StorageServiceProvider.readValue("token"),
+      "application/json",
+      StorageServiceProvider.readValue("client"),
+      StorageServiceProvider.readValue("uid"));
+    let response_headers = null;
+    return this.http.post(this.baseUrl + 'v1/myTrips',
+      {
+        "trip" : data.trip,
+      },
+      {
+        headers : headers.buildHeaders(),
+        observe : "response"
+      }).subscribe(
+      (response) => {
+        this.tripData = response.body;
+        response_headers = new ReadHeadersServiceProvider(response.headers.keys().map(key => `${key}: ${response.headers.get(key)}`));
+        StorageServiceProvider.writeValues({"key" : "token", "value" : response_headers.getToken()});
+        StorageServiceProvider.writeValues({"key" : "client", "value" : response_headers.getClient()});
+        StorageServiceProvider.writeValues({"key" : "uid", "value" : response_headers.getUid()});
+        console.log(response.body)
+      },(response) => {
+        console.log(response);
+      }
+    );
   }
 }
